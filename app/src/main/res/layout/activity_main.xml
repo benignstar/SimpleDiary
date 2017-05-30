@@ -8,7 +8,7 @@
     tools:context="benignstar.kr.hs.emirim.simplediary.MainActivity">
 
     <DatePicker
-        android:id="@+id/data"
+        android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:calendarViewShown="false"
@@ -22,6 +22,7 @@
         android:lines="12"/>
     <Button
         android:id="@+id/but"
+        android:enabled="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SAVE"/>
