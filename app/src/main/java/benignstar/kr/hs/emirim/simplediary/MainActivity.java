@@ -43,7 +43,18 @@ public class MainActivity extends AppCompatActivity {
                 but.setEnabled(true);
             }
         });
-
+        but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    FileOutputStream outFs=openFileOutput(file_name, Context.MODE_PRIVATE);
+                    String str=edit.getText().toString();
+                    outFs.write(str.getBytes());
+                    Toast.makeText(getApplicationContext(), file_name+"이 저장됨",Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                }
+            }
+        });
 
     }
     public String readDiary(String file_name){
