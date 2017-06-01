@@ -1,11 +1,19 @@
 package benignstar.kr.hs.emirim.simplediary;
 
+import android.content.Context;
 import android.icu.util.Calendar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     DatePicker date;
@@ -39,7 +47,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public String readDiary(String file_name){
-
-        return null;
+        String diaryStr=null;
+        FileInputStream inFs;
+        try{
+            inFs=openFileInput(file_name);
+            byte[] txt=new byte[500];
+            inFs.read(txt);
+            inFs.close();
+            diaryStr=(new String(txt)).trim();
+            but.setText("수정");
+        }catch (IOException e){
+            edit.setHint("일기 없음");
+            but.setText("새로 저장");
+        }
+        return diaryStr;
     }
 }
